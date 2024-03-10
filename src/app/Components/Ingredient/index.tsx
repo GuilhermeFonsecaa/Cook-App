@@ -4,7 +4,7 @@ import { styles } from "./styles";
 export type IngredientProps = {
     name: string,
     image: string,
-    selected: boolean
+    selected?: boolean
 }
 
 export function Ingredient({ name, image, selected = false, ...rest }: IngredientProps & PressableProps) {

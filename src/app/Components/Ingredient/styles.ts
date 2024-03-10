@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: theme.fonts.size.body.sm,
+        fontSize: theme.fonts.size.body.xs,
         fontFamily: theme.fonts.family.medium
     },
 
