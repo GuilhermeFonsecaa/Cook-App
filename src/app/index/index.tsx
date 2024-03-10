@@ -4,10 +4,13 @@ import { Ingredient } from "../Components/Ingredient";
 import { useState } from "react";
 import { Selected } from "../Components/Selected";
 import { router } from "expo-router";
+import { useEffect } from "react";
+import { services } from "@//app/services"
 
 
 export default function Index() {
     const [selected, setSelected] = useState<string[]>([])
+    const [ingredients, setIngredients] = useState<IngredientResponse[]>([])
 
     function handleToogleSelected(value: string) {
         if (selected.includes(value)) {
@@ -28,6 +31,10 @@ export default function Index() {
         router.navigate("/recipes/")
     }
 
+    useEffect(() => {
+        services.ingredients.findAll().then(setIngredients)
+    }, [])
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Escolha {"\n"}
@@ -35,8 +42,8 @@ export default function Index() {
             </Text>
             <Text style={styles.message}>Descubra receitas baseadas nos produtos que você escolheu</Text>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.ingredients}>
-                {Array.from({ length: 100 }).map((item, index) => (
-                    <Ingredient name="Maçã" selected={selected.includes(String(index))} image={""} key={index} onPress={() => handleToogleSelected(String(index))} />
+                {ingredients.map((item) => (
+                    <Ingredient name={item.name} selected={selected.includes(item.id)} image={`${services.storage.imagePath}/${item.image}`} key={item.id} onPress={() => handleToogleSelected(String(item.id))} />
                 ))}
             </ScrollView>
 

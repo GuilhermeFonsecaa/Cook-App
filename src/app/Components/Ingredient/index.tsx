@@ -10,7 +10,7 @@ export type IngredientProps = {
 export function Ingredient({ name, image, selected = false, ...rest }: IngredientProps & PressableProps) {
     return (
         <Pressable style={[styles.container, selected && styles.selected]} {...rest}>
-            <Image source={require("@//app/assets/tomato.png")} style={styles.image} />
+            <Image source={{uri: image}} style={styles.image} />
             <Text style={styles.title}>{name}</Text>
         </Pressable>
     );

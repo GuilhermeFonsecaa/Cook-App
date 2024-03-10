@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: theme.colors.gray_200,
         borderRadius: theme.borderRadius.full,
-        paddingHorizontal: 16,
+        paddingHorizontal: 15,
         height: 42,
         alignItems: "center",
         flexDirection: "row",
@@ -14,8 +14,8 @@ export const styles = StyleSheet.create({
     },
 
     image: {
-        width: 16,
-        height: 16
+        width: 17,
+        height: 17
     },
 
     title: {
